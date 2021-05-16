@@ -1,0 +1,68 @@
+Casos de uso:
+
+1. Administrador: alta de una nueva reserva
+	· Accedemos a unha pantalla cun formulario onde se introducen datos de reserva nova. Botón de 'Aceptar', e gravamos
+
+2. Administrador: listar reservas
+	· Pantalla con la lista de todas las reservas ordenadas por fecha de expedición más reciente.
+
+	2.1 Administrador: buscar reserva por DNI
+		· Pantalla con la lista de todas la reservas ordenadas por fecha de expedición más reciente
+		· Selección del botón "Busqueda" donde se introducirá el DNI de la persona reservante
+		· Pantalla con la/s reservas asociadas al DNI especificado
+
+		2.1.1 Administrador: eliminar reserva concreta
+			· Pantalla con el resultado de la búsqueda previa por DNI
+			· Seleccionamos opción eliminar reserva. Se elimina la reserva de la lista
+			. Mensaje de confirmación de los datos que se van a eliminar
+
+		2.1.2 Administrador: modificar reserva
+			· Pantalla con el resultado de la búsqueda previa por DNI
+			· Seleccionamos opción modificar reserva, acedemos a un formulario de modificación de datos (num_camas, fecha_entrada). Modificamos y "Aceptar".
+
+	2.2 Administrador: filtro reservas por fecha de expedición o fecha entrada
+		· Pantalla con la lista de todas la reservas ordenadas por fecha de expedición más reciente
+		· Selección opción a filtrar (fecha de expedición o fecha entrada) en un desplegable y escribir la fecha por la que filtrar. "Aplicar filtro"
+
+3. Administrador: alta de un cliente
+	· Accedemos a una pantalla con un formulario donde se introducen los datos del cliente nuevo. Botón "Aceptar" y guardamos
+
+4. Administrador: listar clientes
+	· Pantalla con la lista de todos los clientes ordenados alfabeticamente por nombre
+
+	4.1 Administrador: buscar clientes por DNI 
+		· Pantalla con la lista de todos los clientes ordenados alfabeticamente por nombre
+		· Seleccionar botón "Búsqueda" donde se introducirá el DNI del cliente a buscar
+		· Pantalla con la información del cliente
+
+			4.1.1 Administrador: editar cliente
+				· Pantalla con la información del cliente
+				· Selección de la opción editar cliente, accedemos a un formulario de modificación de datos (tlf, e-mail, num_tarjeta). Modificamos y "Aceptar"
+
+			4.1.2 Administrador: eliminar cliente
+				· Pantalla con la información del cliente
+				· Selección de la opción "eliminar". Se eliminará el cliente de la lista de clientes así como todas sus reservas (eliminación en cascada)
+
+	4.2 Administrador: crear grupo
+		· Pantalla con un formulario para completar los datos del nuevo grupo
+		· Para completar el campo "Integrantes" se solicitará Nombre, Apellidos y DNI.
+			- Seleccionar botón "+" para añadir los campos para incluir cada integrante al grupo
+			- A modo de "autocompletado", primero se solicitará el DNI para realizar una búsqueda por este parámetro:
+				> En caso de que exista el cliente: se traerán los datos solicitados (Nombre y apellidos) de la BD
+				> En caso de no existir el cliente: se creará como un nuevo cliente donde solo se introducirán los datos de "Nombre" y "Apellidos" (uso de un constructor "Short")
+
+	4.3 Administrador: listar grupos
+		· Pantalla con una lista con los grupos
+
+		4.3.1 Administrador: ver grupo
+			· Pantalla con una lista con los grupos
+			· Seleccionar opción "ver
+			· Pantalla con los datos del grupo
+
+		4.3.2 Administrador: eliminar grupo
+			· Pantalla con una lista con los grupos
+			· Seleccionar opción "borrar". Elimina el grupo de la BD
+
+		4.3.3 Administrador: Modificar grupo
+			· Pantalla con una lista con los grupos
+			· Selección opción "modificar". Accedemos a un formulario de modificación de los datos donde podemos añadir o eliminar integrantes
