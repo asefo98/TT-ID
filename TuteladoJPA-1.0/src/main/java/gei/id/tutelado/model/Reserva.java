@@ -32,10 +32,10 @@ public class Reserva {
 	@Column(nullable = false, unique = true)
     private String nomAlbergue;
 	
-	@Column(nullable = false, unique=false)
+	@Column(nullable = false, unique=true)
     private LocalDate fechaIni;
 	
-	@Column(nullable = false, unique=false)
+	@Column(nullable = false, unique=true)
     private LocalDate fechaFin;
 	
 	

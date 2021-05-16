@@ -7,13 +7,8 @@ pkColumnName="nombre_id", pkColumnValue="idCliente",
 valueColumnName="ultimo_valor_id",
 initialValue=0, allocationSize=1)
 
-@NamedQueries ({
-	@NamedQuery (name="Cliente.recuperaPorCodigo",
-				 query="SELECT c FROM Cliente c WHERE c.cod=:cod"),
-	@NamedQuery (name="Cliente.recuperaTodos",
-	 			 query="SELECT c FROM Cliente c ORDER BY c.cod"),
-})
-
+@Entity
+@Inheritance (strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Cliente {
 
 	@Id
