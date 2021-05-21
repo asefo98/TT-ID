@@ -1,68 +1,111 @@
-Casos de uso:
+CRUD -> Create - Read - Update - Delete
 
-1. Administrador: alta de una nueva reserva
-	· Accedemos a unha pantalla cun formulario onde se introducen datos de reserva nova. Botón de 'Aceptar', e gravamos
+CASOS DE USO
 
-2. Administrador: listar reservas
-	· Pantalla con la lista de todas las reservas ordenadas por fecha de expedición más reciente.
+1. Administrador: Alta nueva persona
+	- Pantalla con formulario donde se introducen los datos de la nueva persona
+	- "Aceptar" y guardamos
 
-	2.1 Administrador: buscar reserva por DNI
-		· Pantalla con la lista de todas la reservas ordenadas por fecha de expedición más reciente
-		· Selección del botón "Busqueda" donde se introducirá el DNI de la persona reservante
-		· Pantalla con la/s reservas asociadas al DNI especificado
+	1.1 Administrador: Añadir como integrante
+		- Pantalla con formulario donde se introducen los datos de la nueva persona
+		- Selección opción "añadir integrante"
+		- Pantalla con la lista de grupos creados donde se puede añadir
+		- Selección del grupo
+		- "Aceptar" y guardar
 
-		2.1.1 Administrador: eliminar reserva concreta
-			· Pantalla con el resultado de la búsqueda previa por DNI
-			· Seleccionamos opción eliminar reserva. Se elimina la reserva de la lista
-			. Mensaje de confirmación de los datos que se van a eliminar
+2 Administrador: Editar persona
+	- Pantalla con formulario para buscar la persona (nombre y apellidos, dni)
+	- Selección opción para modificar los datos de una persona de la lista
+	- Accedemos a un formulario de modificación de los datos (email, tlf, tarjeta, nombre, apellidos, dni)
+	- Modificamos y "Aceptar"
 
-		2.1.2 Administrador: modificar reserva
-			· Pantalla con el resultado de la búsqueda previa por DNI
-			· Seleccionamos opción modificar reserva, acedemos a un formulario de modificación de datos (num_camas, fecha_entrada). Modificamos y "Aceptar".
+3 Administrador: Eliminar persona
+	- Pantalla con formulario para buscar la persona (nombre y apellidos, dni)
+	- Selección opción para eliminar persona
+	- Mensaje confirmación
+	- "Aceptar" y se elimina de la BD la persona, todas las reservas que tuviera asociadas y de todos los grupos en los que estuviera como integrante
 
-	2.2 Administrador: filtro reservas por fecha de expedición o fecha entrada
-		· Pantalla con la lista de todas la reservas ordenadas por fecha de expedición más reciente
-		· Selección opción a filtrar (fecha de expedición o fecha entrada) en un desplegable y escribir la fecha por la que filtrar. "Aplicar filtro"
+4 Administrador: Listar reservas persona
+	- Pantalla con formulario para buscar la persona (nombre y apellidos, dni)
+	- Pantalla con los datos de esa persona en concreto y sus reservas ordenadas por Fecha inicio
 
-3. Administrador: alta de un cliente
-	· Accedemos a una pantalla con un formulario donde se introducen los datos del cliente nuevo. Botón "Aceptar" y guardamos
+	4.1 Administrador: Ver reserva
+		- Pantalla con los datos de esa persona en concreto y sus reservas ordenadas por Fecha inicio
+		- Selección de una reserva
+		- Pantalla con los datos de la reserva
 
-4. Administrador: listar clientes
-	· Pantalla con la lista de todos los clientes ordenados alfabeticamente por nombre
+	4.2 Administrador: Alta de una nueva Reserva
+		- Pantalla con los datos de esa persona en concreto y sus reservas ordenadas por Fecha inicio
+		- Selección de la opción "Nueva reserva"
+		- Pantalla con formulario para especificar los datos de una nueva reserva.
+		- "Aceptar" y guardamos
 
-	4.1 Administrador: buscar clientes por DNI 
-		· Pantalla con la lista de todos los clientes ordenados alfabeticamente por nombre
-		· Seleccionar botón "Búsqueda" donde se introducirá el DNI del cliente a buscar
-		· Pantalla con la información del cliente
+	4.3 Administrador: Modificar reserva
+		- Pantalla con los datos de esa persona en concreto y sus reservas ordenadas por Fecha inicio
+		- Selección opción para editar la reserva de la lista
+		- Pantalla con un formulario para editar los datos de la reserva
+		- Modificamos y guardamos
 
-			4.1.1 Administrador: editar cliente
-				· Pantalla con la información del cliente
-				· Selección de la opción editar cliente, accedemos a un formulario de modificación de datos (tlf, e-mail, num_tarjeta). Modificamos y "Aceptar"
+	4.4 Administrador: Eliminar reserva
+		- Pantalla con los datos de esa persona en concreto y sus reservas ordenadas por Fecha inicio
+		- Selección opción para eliminar la reserva de la lista
+		- Mensaje confirmación
+		- Eliminación de la reserva de la BD
 
-			4.1.2 Administrador: eliminar cliente
-				· Pantalla con la información del cliente
-				· Selección de la opción "eliminar". Se eliminará el cliente de la lista de clientes así como todas sus reservas (eliminación en cascada)
+5. Administrador: Alta nuevo grupo
+		- Pantalla con formulario donde se introducen los datos del nuevo grupo
+		- "Aceptar" y guardamos
 
-	4.2 Administrador: crear grupo
-		· Pantalla con un formulario para completar los datos del nuevo grupo
-		· Para completar el campo "Integrantes" se solicitará Nombre, Apellidos y DNI.
-			- Seleccionar botón "+" para añadir los campos para incluir cada integrante al grupo
-			- A modo de "autocompletado", primero se solicitará el DNI para realizar una búsqueda por este parámetro:
-				> En caso de que exista el cliente: se traerán los datos solicitados (Nombre y apellidos) de la BD
-				> En caso de no existir el cliente: se creará como un nuevo cliente donde solo se introducirán los datos de "Nombre" y "Apellidos" (uso de un constructor "Short")
+		5.1 Administrador: Adición de los integrantes
+			- Pantalla con formulario donde se introducen los datos del nuevo grupo
+			- Buscador por dni de las personas creadas
+			- Selección del resultado de la búsqueda para añadirlo a los integrantes del grupo
+			- En caso de no haber resultados, selección opción para añadir una nueva persona (Caso de uso 1)
+			- "Aceptar" y guardar
 
-	4.3 Administrador: listar grupos
-		· Pantalla con una lista con los grupos
+6. Administrador: Listar grupos
+	- Pantalla con la lista de todos los grupos creados
 
-		4.3.1 Administrador: ver grupo
-			· Pantalla con una lista con los grupos
-			· Seleccionar opción "ver
-			· Pantalla con los datos del grupo
+	6.1 Administrador: Ver grupo
+		- Pantalla con la lista de todos los grupos creados
+		- Selección del grupo 
+		- Pantalla con los datos del grupo seleccionado
 
-		4.3.2 Administrador: eliminar grupo
-			· Pantalla con una lista con los grupos
-			· Seleccionar opción "borrar". Elimina el grupo de la BD
+		6.1.2 Administrador: Listar integrantes
+			- Pantalla con los datos del grupo seleccionado
+			- Selección de la pestaña integrantes
+			- Vista de la lista de los integrantes del grupo
 
-		4.3.3 Administrador: Modificar grupo
-			· Pantalla con una lista con los grupos
-			· Selección opción "modificar". Accedemos a un formulario de modificación de los datos donde podemos añadir o eliminar integrantes
+			6.1.2.1 Administrador: Añadir integrante
+				- Vista de la lista de los integrantes del grupo
+				- Selección opción "Añadir"
+				- Dispara caso de uso 5.1
+
+			6.1.2.2 Administrador: Eliminar integrante
+				- Vista de la lista de los integrantes del grupo
+				- Selección opción "eliminar"
+				- Borra al integrante de la colección
+
+	6.2 Administrador: Editar grupo
+		- Pantalla con la lista de todos los grupos creados
+		- Selección de la opción editar
+		- Pantalla con el formulario para editar los datos (email, tlf, tarjeta, intergantes)
+
+	6.3 Administrador: Eliminar grupo
+		- Pantalla con la lista de todos los grupos creados
+		- Selección opción eliminar
+		- Se elimina el grupo
+
+	6.4 Administrador: Listar reservas del grupo
+		- Dispara el caso de uso 4
+
+7. Administrador: Listar reservas
+	- Pantalla con una lista con todas las reservas ordenadas por fecha de inicio
+
+	7.1 Administrador: Filtro reservas por fecha concreta
+		- Pantalla con buscador donde se indicará la fecha de inicio
+		- Lista con las reservas que tienen como fecha de inicio la indicada
+
+	7.2 Administrador: Filtro reservas por "nombre albergue"
+		- Pantalla con buscador donde se indicará el nombre del albergue
+		- Lista con todas las reservas asociadas a ese albergue
