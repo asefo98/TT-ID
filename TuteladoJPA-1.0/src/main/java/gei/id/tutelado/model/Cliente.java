@@ -1,11 +1,19 @@
 package gei.id.tutelado.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @TableGenerator(name="generadorIdsCliente", table="tabla_ids",
 pkColumnName="nombre_id", pkColumnValue="idCliente",
 valueColumnName="ultimo_valor_id",
 initialValue=0, allocationSize=1)
+
+@NamedQueries ({
+	@NamedQuery (name="Cliente.recuperaPorCodigo",
+	query="SELECT c FROM Cliente c WHERE c.codCliente=:codCliente")
+})
 
 @Entity
 @Inheritance (strategy=InheritanceType.TABLE_PER_CLASS)
@@ -28,7 +36,9 @@ public abstract class Cliente {
     private String numTarjeta;
 	
 	//Reservas [] : Reserva
-	
+	@OneToMany(mappedBy = "cliente", fetch=FetchType.LAZY, cascade= {CascadeType.REMOVE})
+	private Set<Reserva> reservas = new HashSet<Reserva>();
+
     public Long getId() {
 		return id;
 	}
@@ -48,6 +58,10 @@ public abstract class Cliente {
 		return numTarjeta;
 	}
 	
+	public Set<Reserva> getReservas(){
+		return reservas;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -68,6 +82,17 @@ public abstract class Cliente {
 		this.numTarjeta = numTarjeta;
 	}
 
+	public void setReservas(Set<Reserva> reservas){
+		this.reservas = reservas;
+	}
+
+	public void addReserva(Reserva reserva) {
+		if (reserva.getCliente() != null) throw new RuntimeException ("");
+		reserva.setCliente(this);
+		this.reservas.add(reserva);
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

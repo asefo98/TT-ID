@@ -2,6 +2,7 @@ package gei.id.tutelado.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="persona")
 public class Persona extends Cliente {
